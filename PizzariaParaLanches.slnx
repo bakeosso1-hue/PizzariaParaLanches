@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Pizzaria.APi/Pizzaria.API.csproj" />
+  <Project Path="Pizzaria.Application/Pizzaria.Application.csproj" />
+  <Project Path="Pizzaria.Desktop/Pizzaria.Desktop.csproj" />
+  <Project Path="Pizzaria.Domain/Pizzaria.Domain.csproj" />
+  <Project Path="Pizzaria.Infrasctuture/Pizzaria.Infrasctuture.csproj" />
+</Solution>
