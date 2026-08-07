@@ -10,8 +10,12 @@ namespace Pizzaria.Domain.Entities
 
         public string Name { get; set; } = string.Empty;
 
+
+        // ---------------------------------------------------------------------------
         public virtual ICollection<Pizza> Pizzas { get; set; } = new List<Pizza>();
 
         public virtual ICollection<Esfiha> Esfihas { get; set; } = new List<Esfiha>();
+
+        public virtual ICollection<Fogazza> Fogazzas { get; set; } = new List<Fogazza>();
     }
 }
