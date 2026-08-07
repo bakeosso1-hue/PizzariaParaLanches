@@ -11,9 +11,4 @@
     <ProjectReference Include="..\Pizzaria.Domain\Pizzaria.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
