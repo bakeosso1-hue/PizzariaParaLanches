@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pizzaria.Application.Interfaces
 {
-    class interface IPizzaService
+    public interface IPizzaService
     {
         Task<IEnumerable<PizzaDto>> GetAllAsync();
         Task<PizzaDto?> GetByIdAsync(int id);

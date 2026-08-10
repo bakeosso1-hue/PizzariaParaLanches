@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pizzaria.Domain.Interfaces
 {
-    internal interface IFogazzaRepository
+    public interface IFogazzaRepository
     {
         Task<IEnumerable<Pizza>> GetAllPizzasAsync();
 

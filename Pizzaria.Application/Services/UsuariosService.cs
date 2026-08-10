@@ -1,4 +1,5 @@
-﻿using Pizzaria.Application.DTOs;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Pizzaria.Application.DTOs;
 using Pizzaria.Application.Interfaces;
 using System;
 using System.Collections.Generic;
