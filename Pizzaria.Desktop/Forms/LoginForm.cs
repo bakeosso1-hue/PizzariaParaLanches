@@ -1,4 +1,5 @@
-﻿using Pizzaria.Desktop.Forms;
+﻿using Pizzaria.Desktop.DTOs;
+using Pizzaria.Desktop.Forms;
 using Pizzaria.Desktop.Helpers;
 using Pizzaria.Desktop.Services;
 using System;
@@ -15,8 +16,26 @@ namespace Pizzaria.Desktop
     {
         private AuthApiService _authService = null;
 
-        public LoginForm()
+        public CreatePizzaDto? PizzaDto { get; private set; }
+
+        public UpdatePizzaDto? UpdateDto { get; private set; }
+
+        private List<CategoriaResponseDto> _categorias = new();
+        private PizzaResponseDto? _PizzaExistente;
+
+
+        public LoginForm(List<DTOs.CategoriaResponseDto> categorias)
         {
+            _authService = new AuthApiService();
+            InitializeComponent();
+        }
+
+        // Added overload to match usages that pass categories and an optional existing pizza
+        public LoginForm(List<DTOs.CategoriaResponseDto> categorias, PizzaResponseDto? pizza)
+        {
+            _authService = new AuthApiService();
+            _categorias = categorias ?? new List<CategoriaResponseDto>();
+            _PizzaExistente = pizza;
             InitializeComponent();
         }
 
