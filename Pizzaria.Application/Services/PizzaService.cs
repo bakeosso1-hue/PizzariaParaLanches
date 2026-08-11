@@ -3,14 +3,16 @@ using Pizzaria.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Pizzaria.Domain.Entities;
+using Pizzaria.Domain.Interfaces;
 
 namespace Pizzaria.Application.Services
 {
     public class PizzaService : IPizzaService
     {
-        private readonly IPizzaService _pizzaRepository;
+        private readonly IPizzaRepository _pizzaRepository;
 
-        public PizzaService(IPizzaService pizzaRepository)
+        public PizzaService(IPizzaRepository pizzaRepository)
         {
             _pizzaRepository = pizzaRepository;
         }
@@ -18,7 +20,7 @@ namespace Pizzaria.Application.Services
         public async Task<IEnumerable<PizzaDto>> GetAllAsync()
         {
             var pizzas = await _pizzaRepository.GetAllAsync();
-            return await _pizzaRepository.Select(MapToDto);
+            return pizzas.Select(MapToDto);
         }
 
         public async Task<PizzaDto?> GetByIdAsync(int id)
@@ -54,21 +56,6 @@ namespace Pizzaria.Application.Services
             await _pizzaRepository.AddAsync(pizza);
             return MapToDto(pizza);
         }
-        public async Task<PizzaDto> UpdateAsync(UpdatePizzaDto dto)
-        {
-            var pizza = await _pizzaRepository.GetByIdAsync(dto.Id);
-            if (pizza == null) return null;
-
-            pizza.Name = dto.Name;
-            pizza.Description = dto.Description;
-            pizza.CoverImageUrl = dto.CoverImageUrl;
-            pizza.CategoryId = dto.CategoryId;
-            pizza.IsFeatured = dto.IsFeatured;
-
-            await _pizzaRepository.UpdateAsync(pizza);
-            return MapToDto(pizza);
-        }
-
         public async Task<bool> DeleteAsync(int id)
         {
             var pizza = await _pizzaRepository.GetByIdAsync(id);
@@ -94,6 +81,20 @@ namespace Pizzaria.Application.Services
                 CategoryName = pizza.Category?.Name ?? string.Empty,
                 IsFeatured = pizza.IsFeatured,
             };
+        }
+        public async Task<PizzaDto?> UpdateAsync(int id,UpdatePizzaDto dto)
+        {
+            var pizza = await _pizzaRepository.GetByIdAsync(id);
+            if (pizza == null) return null;
+
+            pizza.Name = dto.Name;
+            pizza.Description = dto.Description;
+            pizza.CoverImageUrl = dto.CoverImageUrl;
+            pizza.CategoryId = dto.CategoryId;
+            pizza.IsFeatured = dto.IsFeatured;
+
+            await _pizzaRepository.UpdateAsync(pizza);
+            return MapToDto(pizza);
         }
     }
 }

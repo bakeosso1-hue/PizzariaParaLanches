@@ -7,11 +7,11 @@ namespace Pizzaria.Domain.Interfaces
 {
     public interface IPizzaRepository
     {
-       Task<IEnumerable<Pizza>> GetAllPizzasAsync();
+       Task<IEnumerable<Pizza>> GetAllAsync();
 
-        Task<Pizza?> GetPizzaByIdAsync(int id);
+        Task<Pizza?> GetByIdAsync(int id);
 
-        Task<IEnumerable<Pizza>> GetFeaturedPizzasAsync();
+        Task<IEnumerable<Pizza>> GetFeaturedAsync();
 
         Task AddAsync(Pizza pizza);
 
@@ -20,6 +20,6 @@ namespace Pizzaria.Domain.Interfaces
         Task DeleteAsync(int id);
 
         Task<int> CountAsync();
-
+        Task<IEnumerable<Pizza>> GetByCategoryAsync(int categoryId);
     }
 }
