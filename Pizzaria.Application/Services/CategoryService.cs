@@ -1,5 +1,7 @@
 ﻿using Pizzaria.Application.DTOs;
 using Pizzaria.Application.Interfaces;
+using Pizzaria.Domain.Entities;
+using Pizzaria.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
