@@ -17,6 +17,7 @@ namespace Pizzaria.Domain.Entities
         public int CategoryId { get; set; }
 
         public bool IsFeatured { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         // X
 

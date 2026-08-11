@@ -4,6 +4,7 @@ using Pizzaria.Application.Interfaces;
 using Pizzaria.Application.Services;
 using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
+using Pizzaria.Infrasctuture.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,12 +64,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 // o .NET automaticamente cria um GameService e injeta no construtor.
 // =====================================================================
 builder.Services.AddScoped<IPizzaRepository , PizzaRepository>();
-builder.Services.AddScoped<IEsfihaRepository, EsfihaRepository>();
-builder.Services.AddScoped<IFogazzaRepository, FogazzaRepository>
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPizzaService, PizzaService>();
-builder.Services.AddScoped<IEsfihaService, EsfihaService>();
-builder.Services.AddScoped<IFogazzaService, FogazzaService>
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUsuariosService, UsuarioService>();
 

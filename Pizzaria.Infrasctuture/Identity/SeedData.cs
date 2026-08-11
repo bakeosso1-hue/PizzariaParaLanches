@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+//=========================================
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pizzaria.Domain.Entities;
@@ -26,13 +28,17 @@ namespace Pizzaria.Infrasctuture.Identity
             {
                 var categories = new List<Category>
                 {
-                    new Category { Name = "Pizzas" },
-                    new Category { Name = "Esfihas" },
-                    new Category { Name = "Fogazzas" }
+                    new Category { Name = "Queijo" },
+                    new Category { Name = "Calabresa" },
+                    new Category { Name = "Quatro Queijos" },
+                    new Category { Name = "Portuguesa" },
+                    new Category { Name = "Frango com Catupiry" },
+                    new Category { Name = "Carne" },
+                    new Category { Name = "Frango" },
+                    new Category { Name = "Escarola" }
                 };
                 await content.Categories.AddRangeAsync(categories);
                 await content.SaveChangesAsync();
-
             }
 
             // Seed pizzas only when there are no pizzas yet
@@ -46,7 +52,7 @@ namespace Pizzaria.Infrasctuture.Identity
 
                 // Only add pizzas if required categories are present
 
-                    var pizzas = new List<Pizza>
+                var pizzas = new List<Pizza>
                     {
                     new Pizza {
                             Name = "Pizza de Queijo",
@@ -81,97 +87,11 @@ namespace Pizzaria.Infrasctuture.Identity
                         IsFeatured = true },
                     };
 
-                    await content.Pizzas.AddRangeAsync(pizzas);
-                    await content.SaveChangesAsync();
-                }
-
-                if (!content.Esfihas.Any())
-                {
-                    var carne = content.Esfihas.FirstAsync(c=> c.Name =="Carne");
-                    var queiijo = content.Esfihas.FirstAsync(c => c.Name == "Queijo");
-                    var frango = content.Esfihas.FirstAsync(c => c.Name == "Frango");
-                    var escarola = content.Esfihas.FirstAsync(c => c.Name == "Escarola");
-
-                }
-            var esfihas = new List<Esfiha>
-                {
-                    new Esfiha
-                    {
-                        Name = "Esfiha de Carne",
-                        Description = "Esfiha aberta com recheio de carne moída temperada",
-                        CoverImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtmh7qMnUN_9_PW6PHFFnJncVtsJcQWjeITV6nYlXSqyf7hK5yhKdq_V4&s=10",
-                        CategoryId = carne.Id,
-                        IsFeatured = true
-                    },
-                    new Esfiha
-                    {
-                        Name = "Esfiha de Queijo",
-                        Description = "Esfiha aberta com recheio de queijo e temperos",
-                        CoverImageUrl = "https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/srh_recipes/fa2083be9b8b984be48b917ccce1f4a3.jpeg?itok=UzYFQExx",
-                        CategoryId = queiijo.Id,
-                        IsFeatured=true
-                },
-                    new Esfiha
-                    {
-                        Name = "Esfiha de Frango",
-                        Description = "Esfiha aberta com recheio de frango desfiado e temperos",
-                        CoverImageUrl = "https://carrefourbrfood.vtexassets.com/arquivos/ids/68537724/esfiha-de-frango-100g-1.jpg?v=637948064789700000",
-                        CategoryId = frango.Id,
-                        IsFeatured = true
-
-                    },
-                    new Esfiha
-                    {
-                        Name = "Esfiha de Escarola",
-                        Description = "Esfiha aberta com recheio de escarola refogada e temperos",
-                        CoverImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ZcpEJTr_qeDv8NznDZLvciRL1z6LlRLhtoM2wSM5hHXFN9qOvdk3Tfw&s=10",
-                        CategoryId = escarola.Id,
-                        IsFeatured = true
-                    }
-            };
-                await content.Esfihas.AddRangeAsync(esfihas);
+                await content.Pizzas.AddRangeAsync(pizzas);
                 await content.SaveChangesAsync();
+            }
 
-            if (!content.Fogazzas.Any())
-            {
-                var calabresa = await content.Categories.FirstAsync(c => c.Name == "Calabresa");
-                var queijo = await content.Categories.FirstAsync(c => c.Name == "Queijo");
-                var frango = await content.Categories.FirstAsync(c => c.Name == "Frango");
-                
-                var fogazzas = new List<Fogazza>
-                {
-                    new Fogazza
-                    {
-                        Name = "Fogazza de Calabresa",
-                        Description = "Fogazza recheada com calabresa, queijo e temperos",
-                        CoverImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1g5k6J3x8X2G7ZlW8zFj5y4V7s",
-                        CategoryId = calabresa.Id,
-                        IsFeatured=true },
-                    new Fogazza 
-                    {
-                        Name="Fogazza de Queijo",
-                        Description="Fogazza recheada com queijo e temperos",
-                        CoverImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1g5k6J3x8X2G7ZlW8zFj5y4V7s",
-                        CategoryId = queijo.Id,
-                        IsFeatured=true },
-                    new Fogazza
-                    {
-                        Name="Fogazza de Frango",
-                        Description="Fogazza recheada com frango desfiado e temperos",
-                        CoverImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1g5k6J3x8X2G7ZlW8zFj5y4V7s",
-                        CategoryId = frango.Id,
-                        IsFeatured=true
-                    };
-                    await content.Fogazzas.AddRangeAsync(fogazzas);
-                    await content.SaveChangesAsync();
-
-
-            
-                }
-              }
-
-
-            if(!await roleManager.RoleExistsAsync("Admin"))
+            if (!await roleManager.RoleExistsAsync("Admin"))
             {
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
             }
@@ -186,7 +106,7 @@ namespace Pizzaria.Infrasctuture.Identity
                     EmailConfirmed = true
                 };
                 var result = await userManager.CreateAsync(adminUser, "Admin@123");
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
                 }

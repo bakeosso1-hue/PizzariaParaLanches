@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Pizzaria.Application.DTOs;
+using Pizzaria.Application.Interfaces;
 
 namespace Pizzaria.API.Controllers
 {

@@ -26,7 +26,19 @@ namespace Pizzaria.API.Controllers
             return Ok(categories);
         }
 
-        
+        // Retorna uma categoria por id.
+        //---------------------------------------------------------------------------------
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CategoryDto>> GetById(int id)
+        {
+            var category = await _categoryService.GetByIdAsync(id);
+
+            if (category == null)
+                return NotFound(new { message = "Categoria não encontrada." });
+
+            return Ok(category);
+        }
+
         // Cria uma nova categoria.
         //---------------------------------------------------------------------------------
         [HttpPost]
@@ -34,10 +46,10 @@ namespace Pizzaria.API.Controllers
         public async Task<ActionResult<CategoryDto>> Create([FromBody] CreateCategoryDto dto)
         {
             var category = await _categoryService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetAll), new { id = category.Id }, category);
+            return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
         }
 
-        
+
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<CategoryDto>> Update(int id, [FromBody] UpdateCategoryDto dto)
@@ -50,7 +62,7 @@ namespace Pizzaria.API.Controllers
             return Ok(category);
         }
 
-        
+
         // Remove uma categoria.
         //---------------------------------------------------------------------------------
         [HttpDelete("{id}")]
