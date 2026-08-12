@@ -1,6 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using Pizzaria.Desktop.Helpers;
 using Pizzaria.Desktop.Services;
+using Pizzaria.Desktop.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,18 +27,29 @@ namespace Pizzaria.Desktop.Forms
             _authService = new AuthApiService();
             this.Text = $"Pizzaria - {AppConfig.Version}";
 
-            lblUsuario.Text = $"ParáLanches Desktop - {AppConfig.Version]}";
+            lblUsuario.Text = $"ParáLanches Desktop - {AppConfig.Version}";
+        }
 
-            private void ConfigurarPermissoes()
+        private void ConfigurarPermissoes()
         {
             var isAdmin = SessionManager.Instance.IsAdmin;
-            btnCategorias.Visible = isAdmin;
-            btnUsuarios.Visible = isAdmin;
+            btnDashboard.Visible = isAdmin;
+            btnPizzas.Visible = isAdmin;
         }
-        private void NavegarParaDashboard()
+        private void Navegar(UserControl control, Guna2Button? botao = null)
         {
-            Navegar(new DashboardUserControl(), btnDashboard);
+            if (_controleAtual != null)
+            {
+                pnlConteudo.Controls.Remove(_controleAtual);
+                _controleAtual.Dispose();
+                _controleAtual = null;
+            }
         }
-    }
+        private void btnDashboard_Click(object sender, EventArgs e)
+        => Navegar(new DashboardUserControl(), btnDashboard);
+
+        private void btnPizzas_Click(object sender, EventArgs e)
+        => Navegar(new PizzasUserControl(), btnPizzas);
     }
 }
+
