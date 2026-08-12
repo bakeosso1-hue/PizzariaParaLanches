@@ -35,6 +35,16 @@ namespace Pizzaria.API.Controllers
 
             return Ok(pizza);
         }
+        // Pizzaria.APi\Controllers\PizzaController.cs (adicionado endpoint POST)
+        [HttpPost]
+        //[Authorize(Roles = "Admin")]
+        [AllowAnonymous] // <-- só para testes locais se preferir
+        public async Task<ActionResult<PizzaDto>> Create([FromBody] CreatePizzaDto dto)
+        {
+            var pizza = await _pizzaService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = pizza.Id }, pizza);
+        }
+
 
         // -----------------------------------------------------------------
         [HttpPut("{id}")]

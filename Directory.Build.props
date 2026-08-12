@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <!-- Force a single Microsoft.OpenApi version across the solution to avoid NU1605 package downgrade -->
+    <PackageVersion Include="Microsoft.OpenApi" Version="2.0.0" />
+  </ItemGroup>
+</Project>

@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 using Pizzaria.Application.Interfaces;
 using Pizzaria.Application.Services;
 using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
 using Pizzaria.Infrasctuture.Identity;
 using Pizzaria.Infrasctuture.Repositories;
+using SenacGames.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,7 +66,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Exemplo: quando um controller precisa do IGameService,
 // o .NET automaticamente cria um GameService e injeta no construtor.
 // =====================================================================
-builder.Services.AddScoped<IPizzaRepository , PizzaRepository>();
+builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 builder.Services.AddScoped<IPizzaService, PizzaService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
@@ -82,15 +84,16 @@ builder.Services.AddControllers();
 // para testar os endpoints da API no navegador.
 // Acesse: https://localhost:PORTA/swagger// =====================================================================
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => 
-{ 
+builder.Services.AddSwaggerGen(options =>
+{
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Pizzaria API",
         Version = "v1",
         Description = "API para gerenciamento de pizzas e categorias"
-    });
-});
+    )};
+
+ 
 
 // =====================================================================
 // 6. CORS — Permite requisições de outras origens
