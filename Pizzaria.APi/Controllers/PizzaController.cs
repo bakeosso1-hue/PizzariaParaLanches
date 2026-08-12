@@ -44,7 +44,7 @@ namespace Pizzaria.API.Controllers
             // Garantir que o DTO contenha o Id vindo da rota
             dto.Id = id;
 
-            var pizza = await _pizzaService.UpdateAsync(dto);
+            var pizza = await _pizzaService.UpdateAsync(id, dto);
 
             if (pizza == null)
                 return NotFound(new { message = "Pizza não encontrada." });

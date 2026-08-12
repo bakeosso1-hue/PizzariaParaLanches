@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Infrasctuture.Context;
+using Pizzaria.Infrasctuture.Identity;
+using Pizzaria.Infrasctuture.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Pizzaria.Infrasctuture.Identity
 {
     public static class SeedData

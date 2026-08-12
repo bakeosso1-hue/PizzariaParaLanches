@@ -41,12 +41,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gridPizzas = new DataGridView();
-            colId = new DataGridViewTextBoxColumn();
-            colTitle = new DataGridViewTextBoxColumn();
-            colCategoryName = new DataGridViewTextBoxColumn();
-            colReleaseYear = new DataGridViewTextBoxColumn();
-            colIsFeatured = new DataGridViewCheckBoxColumn();
-            colCreatedAt = new DataGridViewTextBoxColumn();
             pnlToolbar = new Panel();
             txtPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             btnPesquisar = new Guna.UI2.WinForms.Guna2Button();
@@ -55,6 +49,11 @@
             btnEditar = new Guna.UI2.WinForms.Guna2Button();
             btnNova = new Guna.UI2.WinForms.Guna2Button();
             lblTitulo = new Label();
+            colId = new DataGridViewTextBoxColumn();
+            colTitle = new DataGridViewTextBoxColumn();
+            colCategoryName = new DataGridViewTextBoxColumn();
+            colIsFeatured = new DataGridViewCheckBoxColumn();
+            colCreatedAt = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)gridPizzas).BeginInit();
             pnlToolbar.SuspendLayout();
             SuspendLayout();
@@ -62,47 +61,15 @@
             // gridPizzas
             // 
             gridPizzas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridPizzas.Columns.AddRange(new DataGridViewColumn[] { colId, colTitle, colCategoryName, colReleaseYear, colIsFeatured, colCreatedAt });
+            gridPizzas.Columns.AddRange(new DataGridViewColumn[] { colId, colTitle, colCategoryName, colIsFeatured, colCreatedAt });
             gridPizzas.Location = new Point(15, 159);
             gridPizzas.Name = "gridPizzas";
             gridPizzas.Size = new Size(768, 316);
             gridPizzas.TabIndex = 7;
             // 
-            // colId
-            // 
-            colId.HeaderText = "ID";
-            colId.Name = "colId";
-            // 
-            // colTitle
-            // 
-            colTitle.HeaderText = "Nome";
-            colTitle.Name = "colTitle";
-            colTitle.Width = 225;
-            // 
-            // colCategoryName
-            // 
-            colCategoryName.HeaderText = "Categoria";
-            colCategoryName.Name = "colCategoryName";
-            // 
-            // colReleaseYear
-            // 
-            colReleaseYear.HeaderText = "Ano";
-            colReleaseYear.Name = "colReleaseYear";
-            // 
-            // colIsFeatured
-            // 
-            colIsFeatured.HeaderText = "Destaque";
-            colIsFeatured.Name = "colIsFeatured";
-            colIsFeatured.Resizable = DataGridViewTriState.True;
-            colIsFeatured.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // colCreatedAt
-            // 
-            colCreatedAt.HeaderText = "Cadastrado em";
-            colCreatedAt.Name = "colCreatedAt";
-            // 
             // pnlToolbar
             // 
+            pnlToolbar.BackColor = Color.Maroon;
             pnlToolbar.Controls.Add(txtPesquisa);
             pnlToolbar.Controls.Add(btnPesquisar);
             pnlToolbar.Controls.Add(btnAtualizar);
@@ -154,22 +121,23 @@
             // 
             // btnAtualizar
             // 
+            btnAtualizar.BackColor = Color.Maroon;
             btnAtualizar.BorderRadius = 10;
             btnAtualizar.CustomizableEdges = customizableEdges5;
             btnAtualizar.DisabledState.BorderColor = Color.DarkGray;
             btnAtualizar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAtualizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAtualizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAtualizar.FillColor = Color.Olive;
+            btnAtualizar.FillColor = Color.Gold;
             btnAtualizar.Font = new Font("Segoe UI", 9F);
-            btnAtualizar.ForeColor = Color.White;
+            btnAtualizar.ForeColor = Color.Black;
             btnAtualizar.Location = new Point(669, 28);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnAtualizar.Size = new Size(90, 41);
             btnAtualizar.TabIndex = 1;
             btnAtualizar.Text = "🔄️ Atualizar";
-         
+            btnAtualizar.Click += this.btnAtualizar_Click;
             // 
             // btnExcluir
             // 
@@ -237,10 +205,39 @@
             lblTitulo.TabIndex = 9;
             lblTitulo.Text = "🍕 Gerenciamento de Pizzas";
             // 
+            // colId
+            // 
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            // 
+            // colTitle
+            // 
+            colTitle.HeaderText = "Nome";
+            colTitle.Name = "colTitle";
+            colTitle.Width = 225;
+            // 
+            // colCategoryName
+            // 
+            colCategoryName.HeaderText = "Categoria";
+            colCategoryName.Name = "colCategoryName";
+            // 
+            // colIsFeatured
+            // 
+            colIsFeatured.HeaderText = "Destaque";
+            colIsFeatured.Name = "colIsFeatured";
+            colIsFeatured.Resizable = DataGridViewTriState.True;
+            colIsFeatured.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // colCreatedAt
+            // 
+            colCreatedAt.HeaderText = "Cadastrado em";
+            colCreatedAt.Name = "colCreatedAt";
+            // 
             // PizzasUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             Controls.Add(lblTitulo);
             Controls.Add(pnlToolbar);
             Controls.Add(gridPizzas);
@@ -267,7 +264,6 @@
         private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colTitle;
         private DataGridViewTextBoxColumn colCategoryName;
-        private DataGridViewTextBoxColumn colReleaseYear;
         private DataGridViewCheckBoxColumn colIsFeatured;
         private DataGridViewTextBoxColumn colCreatedAt;
     }

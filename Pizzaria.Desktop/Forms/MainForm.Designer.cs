@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             panel1 = new Panel();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
@@ -41,10 +41,10 @@
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel3 = new Panel();
-            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblPerfil = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblUsuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel4 = new Panel();
-            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblVTNCPARALANCHES = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel5 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // guna2Button2
             // 
-            guna2Button2.CustomizableEdges = customizableEdges1;
+            guna2Button2.CustomizableEdges = customizableEdges5;
             guna2Button2.DisabledState.BorderColor = Color.DarkGray;
             guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -81,7 +81,7 @@
             guna2Button2.ForeColor = Color.Black;
             guna2Button2.Location = new Point(11, 59);
             guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Button2.Size = new Size(180, 45);
             guna2Button2.TabIndex = 2;
             guna2Button2.Text = "Pizza";
@@ -89,7 +89,7 @@
             // guna2Button1
             // 
             guna2Button1.BackColor = Color.FromArgb(192, 192, 0);
-            guna2Button1.CustomizableEdges = customizableEdges3;
+            guna2Button1.CustomizableEdges = customizableEdges7;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -99,7 +99,7 @@
             guna2Button1.ForeColor = Color.Black;
             guna2Button1.Location = new Point(11, 8);
             guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Button1.Size = new Size(180, 45);
             guna2Button1.TabIndex = 1;
             guna2Button1.Text = "DashBoard";
@@ -139,53 +139,53 @@
             // panel3
             // 
             panel3.BackColor = Color.Crimson;
-            panel3.Controls.Add(guna2HtmlLabel3);
-            panel3.Controls.Add(guna2HtmlLabel2);
+            panel3.Controls.Add(this.lblPerfil);
+            panel3.Controls.Add(this.lblUsuario);
             panel3.Location = new Point(1, 1);
             panel3.Name = "panel3";
             panel3.Size = new Size(206, 111);
             panel3.TabIndex = 2;
             // 
-            // guna2HtmlLabel3
+            // lblPerfil
             // 
-            guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.ForeColor = SystemColors.ControlLightLight;
-            guna2HtmlLabel3.Location = new Point(11, 40);
-            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(30, 17);
-            guna2HtmlLabel3.TabIndex = 0;
-            guna2HtmlLabel3.Text = "Perfil";
+            this.lblPerfil.BackColor = Color.Transparent;
+            this.lblPerfil.ForeColor = SystemColors.ControlLightLight;
+            this.lblPerfil.Location = new Point(11, 40);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new Size(30, 17);
+            this.lblPerfil.TabIndex = 0;
+            this.lblPerfil.Text = "Perfil";
             // 
-            // guna2HtmlLabel2
+            // lblUsuario
             // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel2.ForeColor = SystemColors.ControlLightLight;
-            guna2HtmlLabel2.Location = new Point(11, 11);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(78, 32);
-            guna2HtmlLabel2.TabIndex = 0;
-            guna2HtmlLabel2.Text = "Usuário";
+            this.lblUsuario.BackColor = Color.Transparent;
+            this.lblUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            this.lblUsuario.ForeColor = SystemColors.ControlLightLight;
+            this.lblUsuario.Location = new Point(11, 11);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new Size(78, 32);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Text = "Usuário";
             // 
             // panel4
             // 
             panel4.BackColor = Color.Crimson;
-            panel4.Controls.Add(guna2HtmlLabel6);
+            panel4.Controls.Add(lblVTNCPARALANCHES);
             panel4.Location = new Point(204, 1);
             panel4.Name = "panel4";
             panel4.Size = new Size(511, 111);
             panel4.TabIndex = 2;
             // 
-            // guna2HtmlLabel6
+            // lblVTNCPARALANCHES
             // 
-            guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel6.ForeColor = SystemColors.ControlLightLight;
-            guna2HtmlLabel6.Location = new Point(11, 11);
-            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(211, 32);
-            guna2HtmlLabel6.TabIndex = 0;
-            guna2HtmlLabel6.Text = "Pará Lanches Pizzaria";
+            lblVTNCPARALANCHES.BackColor = Color.Transparent;
+            lblVTNCPARALANCHES.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVTNCPARALANCHES.ForeColor = SystemColors.ControlLightLight;
+            lblVTNCPARALANCHES.Location = new Point(11, 11);
+            lblVTNCPARALANCHES.Name = "lblVTNCPARALANCHES";
+            lblVTNCPARALANCHES.Size = new Size(211, 32);
+            lblVTNCPARALANCHES.TabIndex = 0;
+            lblVTNCPARALANCHES.Text = "Pará Lanches Pizzaria";
             // 
             // panel5
             // 
@@ -230,7 +230,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Panel panel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblVTNCPARALANCHES;
         private Panel panel5;
     }
 }
