@@ -4,6 +4,7 @@ using Pizzaria.Application.Interfaces;
 using Pizzaria.Application.Services;
 using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
+using Pizzaria.Infrasctuture.Identity;
 using Pizzaria.Infrasctuture.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -66,7 +67,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IPizzaRepository , PizzaRepository>();
 builder.Services.AddScoped<IPizzaService, PizzaService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IUsuariosService, UsuarioService>();
+builder.Services.AddScoped<IUsuariosService, IUsuariosService>();
 
 // =====================================================================
 // 4. CONTROLLERS
@@ -85,9 +86,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "SenacGames API",
+        Title = "Pizzaria API",
         Version = "v1",
-        Description = "API REST do sistema SenacGames — Catálogo de Games para ensino de ASP.NET Core"
+        Description = "API REST do sistema Pizzaria — Catálogo de Pizza para ensino de ASP.NET Core"
     });
 });
 
