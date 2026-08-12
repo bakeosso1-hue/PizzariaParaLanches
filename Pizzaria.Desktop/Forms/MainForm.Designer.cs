@@ -43,6 +43,7 @@
             panel3 = new Panel();
             lblPerfil = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblUsuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
+
             panel4 = new Panel();
             lblVTNCPARALANCHES = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlConteudo = new Panel();
@@ -143,6 +144,7 @@
             panel3.BackColor = Color.Crimson;
             panel3.Controls.Add(lblPerfil);
             panel3.Controls.Add(lblUsuario);
+
             panel3.Location = new Point(1, 1);
             panel3.Name = "panel3";
             panel3.Size = new Size(206, 111);
@@ -150,6 +152,7 @@
             // 
             // lblPerfil
             // 
+
             lblPerfil.BackColor = Color.Transparent;
             lblPerfil.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPerfil.ForeColor = SystemColors.ControlLightLight;
@@ -169,6 +172,13 @@
             lblUsuario.Size = new Size(78, 32);
             lblUsuario.TabIndex = 1;
             lblUsuario.Text = "Usuario";
+
+
+            // 
+            // lblUsuario
+            // 
+
+
             // 
             // panel4
             // 

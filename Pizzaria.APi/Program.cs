@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Pizzaria.Application.Interfaces;
 using Pizzaria.Application.Services;
 using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
+using Pizzaria.Infrasctuture.Identity;
 using Pizzaria.Infrasctuture.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -66,7 +69,6 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IPizzaRepository , PizzaRepository>();
 builder.Services.AddScoped<IPizzaService, PizzaService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IUsuariosService, UsuarioService>();
 
 // =====================================================================
 // 4. CONTROLLERS
@@ -78,16 +80,15 @@ builder.Services.AddControllers();
 // =====================================================================
 //  CONCEITO: Swagger gera automaticamente uma interface visual
 // para testar os endpoints da API no navegador.
-// Acesse: https://localhost:PORTA/swagger
-// =====================================================================
+// Acesse: https://localhost:PORTA/swagger// =====================================================================
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+builder.Services.AddSwaggerGen(options => 
+{ 
+    options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "SenacGames API",
+        Title = "Pizzaria API",
         Version = "v1",
-        Description = "API REST do sistema SenacGames — Catálogo de Games para ensino de ASP.NET Core"
+        Description = "API para gerenciamento de pizzas e categorias"
     });
 });
 
