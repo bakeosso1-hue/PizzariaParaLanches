@@ -41,8 +41,6 @@
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel3 = new Panel();
-            this.lblPerfil = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lblUsuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel4 = new Panel();
             lblVTNCPARALANCHES = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panel5 = new Panel();
@@ -139,8 +137,6 @@
             // panel3
             // 
             panel3.BackColor = Color.Crimson;
-            panel3.Controls.Add(this.lblPerfil);
-            panel3.Controls.Add(this.lblUsuario);
             panel3.Location = new Point(1, 1);
             panel3.Name = "panel3";
             panel3.Size = new Size(206, 111);
@@ -148,24 +144,11 @@
             // 
             // lblPerfil
             // 
-            this.lblPerfil.BackColor = Color.Transparent;
-            this.lblPerfil.ForeColor = SystemColors.ControlLightLight;
-            this.lblPerfil.Location = new Point(11, 40);
-            this.lblPerfil.Name = "lblPerfil";
-            this.lblPerfil.Size = new Size(30, 17);
-            this.lblPerfil.TabIndex = 0;
-            this.lblPerfil.Text = "Perfil";
+
             // 
             // lblUsuario
             // 
-            this.lblUsuario.BackColor = Color.Transparent;
-            this.lblUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            this.lblUsuario.ForeColor = SystemColors.ControlLightLight;
-            this.lblUsuario.Location = new Point(11, 11);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new Size(78, 32);
-            this.lblUsuario.TabIndex = 0;
-            this.lblUsuario.Text = "Usuário";
+
             // 
             // panel4
             // 

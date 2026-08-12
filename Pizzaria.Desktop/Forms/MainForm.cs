@@ -26,7 +26,7 @@ namespace Pizzaria.Desktop.Forms
             _authService = new AuthApiService();
             this.Text = $"Pizzaria - {AppConfig.Version}";
 
-            lblUsuario.Text = $"ParáLanches Desktop - {AppConfig.Version]}";
+            lblUsuario.Text = $"ParáLanches Desktop - {[AppConfig.Version]}";
 
             private void ConfigurarPermissoes()
         {

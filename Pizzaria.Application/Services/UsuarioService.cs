@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Pizzaria.Application.Services
 {
-    public class UsuárioService : IUsuariosService
+    public class UsuarioService : IUsuariosService
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsuárioService(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsuarioService(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
