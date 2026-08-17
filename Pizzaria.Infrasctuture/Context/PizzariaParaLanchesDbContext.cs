@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Infrasctuture.Configurations;
@@ -8,9 +9,10 @@ using System.Text;
 
 namespace Pizzaria.Infrasctuture.Context
 {
-    public class PizzariaParaLanchesDbContext : IdentityDbContext
+    public class PizzariaParaLanchesDbContext : IdentityDbContext<IdentityUser>
     {
-        public PizzariaParaLanchesDbContext(DbContextOptions<PizzariaParaLanchesDbContext> options)
+        public PizzariaParaLanchesDbContext(
+            DbContextOptions<PizzariaParaLanchesDbContext> options)
             : base(options)
         {
         }

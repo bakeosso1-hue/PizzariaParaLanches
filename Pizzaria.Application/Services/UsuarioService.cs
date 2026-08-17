@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Pizzaria.Application.DTOs;
 using Pizzaria.Application.Interfaces;
 using System;

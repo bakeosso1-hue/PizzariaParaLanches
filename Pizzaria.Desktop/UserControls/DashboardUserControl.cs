@@ -30,6 +30,8 @@ namespace Pizzaria.Desktop.UserControls
             //Preenche dados dinâmicos da sessão
             lblTitulo.Text = $"Olá, {SessionManager.Instance.GetDisplayName()!} 👋";
             lblSubtitulo.Text = $"Bem-vindo a Pará Lanches Pizzaria - {DateTime.Now:dddd, dd 'de' MMM 'de' yyyy}";
+
+            await CarregarDadosAsync();
         }
 
             //======================================================

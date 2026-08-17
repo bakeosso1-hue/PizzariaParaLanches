@@ -6,7 +6,7 @@ namespace Pizzaria.Desktop.Helpers
     {
         private static string? _resolvedUrl;
         private static bool _resolved = false;
-        private const string ApiProjectName = "SenacGames.API";
+        private const string ApiProjectName = "Pizzaria.API";
         private const string LaunchSettingsRelativePath =
             $"{ApiProjectName}/Properties/launchSettings.json";
         private static readonly string[] PreferredProfiles = ["http", "https", "IIS Express"];
@@ -36,7 +36,7 @@ namespace Pizzaria.Desktop.Helpers
             }
 
             Log("❌ URL da API não foi localizada.");
-            Log("   Verifique se SenacGames.API/Properties/launchSettings.json existe");
+            Log("   Verifique se Pizzaria.API/Properties/launchSettings.json existe");
             Log("   ou configure manualmente em appsettings.json → ApiSettings.BaseUrl");
             _resolvedUrl = null;
             return null;

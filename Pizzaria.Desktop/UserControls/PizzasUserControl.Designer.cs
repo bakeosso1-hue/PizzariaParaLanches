@@ -41,6 +41,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gridPizzas = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colTitle = new DataGridViewTextBoxColumn();
+            colCategoryName = new DataGridViewTextBoxColumn();
+            colIsFeatured = new DataGridViewCheckBoxColumn();
+            colCreatedAt = new DataGridViewTextBoxColumn();
             pnlToolbar = new Panel();
             txtPesquisa = new Guna.UI2.WinForms.Guna2TextBox();
             btnPesquisar = new Guna.UI2.WinForms.Guna2Button();
@@ -49,11 +54,6 @@
             btnEditar = new Guna.UI2.WinForms.Guna2Button();
             btnNova = new Guna.UI2.WinForms.Guna2Button();
             lblTitulo = new Label();
-            colId = new DataGridViewTextBoxColumn();
-            colTitle = new DataGridViewTextBoxColumn();
-            colCategoryName = new DataGridViewTextBoxColumn();
-            colIsFeatured = new DataGridViewCheckBoxColumn();
-            colCreatedAt = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)gridPizzas).BeginInit();
             pnlToolbar.SuspendLayout();
             SuspendLayout();
@@ -66,6 +66,34 @@
             gridPizzas.Name = "gridPizzas";
             gridPizzas.Size = new Size(768, 316);
             gridPizzas.TabIndex = 7;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            // 
+            // colTitle
+            // 
+            colTitle.HeaderText = "Nome";
+            colTitle.Name = "colTitle";
+            colTitle.Width = 225;
+            // 
+            // colCategoryName
+            // 
+            colCategoryName.HeaderText = "Categoria";
+            colCategoryName.Name = "colCategoryName";
+            // 
+            // colIsFeatured
+            // 
+            colIsFeatured.HeaderText = "Destaque";
+            colIsFeatured.Name = "colIsFeatured";
+            colIsFeatured.Resizable = DataGridViewTriState.True;
+            colIsFeatured.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // colCreatedAt
+            // 
+            colCreatedAt.HeaderText = "Cadastrado em";
+            colCreatedAt.Name = "colCreatedAt";
             // 
             // pnlToolbar
             // 
@@ -85,7 +113,7 @@
             // 
             txtPesquisa.BorderRadius = 5;
             txtPesquisa.CustomizableEdges = customizableEdges1;
-            txtPesquisa.DefaultText = "🔎 Pesquisar por Nome...";
+            txtPesquisa.DefaultText = "";
             txtPesquisa.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPesquisa.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtPesquisa.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -95,11 +123,12 @@
             txtPesquisa.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPesquisa.Location = new Point(13, 28);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.PlaceholderText = "";
+            txtPesquisa.PlaceholderText = "Pesquisar Pelo Nome";
             txtPesquisa.SelectedText = "";
             txtPesquisa.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtPesquisa.Size = new Size(253, 36);
             txtPesquisa.TabIndex = 2;
+            txtPesquisa.KeyUp += txtPesquisa_KeyUp;
             // 
             // btnPesquisar
             // 
@@ -137,6 +166,7 @@
             btnAtualizar.Size = new Size(90, 41);
             btnAtualizar.TabIndex = 1;
             btnAtualizar.Text = "🔄️ Atualizar";
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnExcluir
             // 
@@ -174,6 +204,7 @@
             btnEditar.Size = new Size(90, 41);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "✏️ Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnNova
             // 
@@ -204,34 +235,6 @@
             lblTitulo.TabIndex = 9;
             lblTitulo.Text = "🍕 Gerenciamento de Pizzas";
             // 
-            // colId
-            // 
-            colId.HeaderText = "ID";
-            colId.Name = "colId";
-            // 
-            // colTitle
-            // 
-            colTitle.HeaderText = "Nome";
-            colTitle.Name = "colTitle";
-            colTitle.Width = 225;
-            // 
-            // colCategoryName
-            // 
-            colCategoryName.HeaderText = "Categoria";
-            colCategoryName.Name = "colCategoryName";
-            // 
-            // colIsFeatured
-            // 
-            colIsFeatured.HeaderText = "Destaque";
-            colIsFeatured.Name = "colIsFeatured";
-            colIsFeatured.Resizable = DataGridViewTriState.True;
-            colIsFeatured.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // colCreatedAt
-            // 
-            colCreatedAt.HeaderText = "Cadastrado em";
-            colCreatedAt.Name = "colCreatedAt";
-            // 
             // PizzasUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -241,7 +244,7 @@
             Controls.Add(pnlToolbar);
             Controls.Add(gridPizzas);
             Name = "PizzasUserControl";
-            Size = new Size(810, 499);
+            Size = new Size(995, 557);
             Load += PizzasUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)gridPizzas).EndInit();
             pnlToolbar.ResumeLayout(false);

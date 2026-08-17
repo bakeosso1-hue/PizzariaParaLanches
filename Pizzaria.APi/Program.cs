@@ -71,10 +71,8 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 builder.Services.AddScoped<IPizzaService, PizzaService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-<<<<<<< HEAD
-builder.Services.AddScoped<IUsuariosService, IUsuariosService>();
-=======
->>>>>>> c9867385a98b816149105768fcf4bbdff5095e51
+builder.Services.AddScoped<IUsuariosService, UsuarioService>();
+
 
 // =====================================================================
 // 4. CONTROLLERS
@@ -94,13 +92,13 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Pizzaria API",
         Version = "v1",
-<<<<<<< HEAD
         Description = "API REST do sistema Pizzaria — Catálogo de Pizza para ensino de ASP.NET Core"
-=======
-        Description = "API para gerenciamento de pizzas e categorias"
-    )};
 
- 
+    });
+});
+
+
+
 
 // =====================================================================
 // 6. CORS — Permite requisições de outras origens

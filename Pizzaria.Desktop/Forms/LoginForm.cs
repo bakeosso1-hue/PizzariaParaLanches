@@ -85,8 +85,8 @@ namespace Pizzaria.Desktop
 
             lblApi.Text = $"API: {AppConfig.ApiBaseUrl}";
 
-            txtEmail.Text = "admin@ParáLanches.com";
-            txtSenha.Text = "admin@123";
+            txtEmail.Text = "admin@paralanches.com";
+            txtSenha.Text = "Admin@123";
         }
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)

@@ -14,29 +14,28 @@ namespace Pizzaria.Desktop.Forms
 {
     public partial class MainForm : Form
     {
-        private UserControl _controleAtual;
+        private UserControl? _controleAtual;
         private Guna2Button? _botaoAtivo;
         private AuthApiService _authService = null;
         public MainForm()
         {
             InitializeComponent();
         }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
             _authService = new AuthApiService();
             this.Text = $"Pizzaria - {AppConfig.Version}";
+            lblUsuario.Text = $"{SessionManager.Instance.GetDisplayName()}";
 
-
-            lblUsuario.Text = $"ParáLanches Desktop - {AppConfig.Version}";
+            ConfigurarPermissoes();
+            NavegarParaGrid();
         }
-
 
         private void ConfigurarPermissoes()
         {
             var isAdmin = SessionManager.Instance.IsAdmin;
-            btnDashboard.Visible = isAdmin;
-            btnPizzas.Visible = isAdmin;
         }
         private void Navegar(UserControl control, Guna2Button? botao = null)
         {
@@ -47,11 +46,13 @@ namespace Pizzaria.Desktop.Forms
                 _controleAtual = null;
             }
         }
-        private void btnDashboard_Click(object sender, EventArgs e)
-        => Navegar(new DashboardUserControl(), btnDashboard);
+        private void NavegarParaGrid()
+        {
+            pnlConteudo.Controls.Clear();
+            pnlConteudo.Controls.Add(new PizzasUserControl());
+        }
 
-        private void btnPizzas_Click(object sender, EventArgs e)
-        => Navegar(new PizzasUserControl(), btnPizzas);
+
     }
 }
 
