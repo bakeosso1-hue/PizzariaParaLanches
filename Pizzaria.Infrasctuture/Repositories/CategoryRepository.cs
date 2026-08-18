@@ -11,7 +11,7 @@ using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
 
 
-namespace SenacGames.Infrastructure.Repositories
+namespace Pizzaria.Infrastructure.Repositories
 {
     /// <summary>
     /// Implementação do repositório de Categorias usando Entity Framework Core.

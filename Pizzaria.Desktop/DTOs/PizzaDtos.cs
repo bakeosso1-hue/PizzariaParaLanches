@@ -11,7 +11,7 @@ namespace Pizzaria.Desktop.DTOs
         public string Descrição { get; set; } = string.Empty;
         public DateTime Data { get; set; } = DateTime.Now;
         public string CoverImageUrl { get; set; } = string.Empty;
-        public int CategoriaId { get; set; } 
+        public int CategoryId { get; set; } 
         public string CategoriaName { get; set; } = string.Empty;
         public bool IsFeatured { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -23,7 +23,7 @@ namespace Pizzaria.Desktop.DTOs
         public string Descrição { get; set; } = string.Empty;
         public DateTime Data { get; set; } = DateTime.Now;
         public string CoverImageUrl { get; set; } = string.Empty;
-        public int CategoriaId { get; set; }
+        public int CategoryId { get; set; }
         public bool IsFeatured { get; set; }
     }
 
@@ -33,7 +33,7 @@ namespace Pizzaria.Desktop.DTOs
         public string Descrição { get; set; } = string.Empty;
         public DateTime Data { get; set; } = DateTime.Now;
         public string CoverImageUrl { get; set; } = string.Empty;
-        public int CategoriaId { get; set; }
+        public int CategoryId { get; set; }
         public bool IsFeatured { get; set; }
     }
 }

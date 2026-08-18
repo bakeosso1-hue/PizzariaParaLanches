@@ -54,28 +54,27 @@ namespace Pizzaria.Desktop.UserControls
                 var tarefaCategorias = _categoriasService.GetAllAsync();
                 await Task.WhenAll(tarefaPizzas, tarefaCategorias);
 
-                var games = tarefaPizzas.Result;
+                var pizzas = tarefaPizzas.Result;
                 var categorias = tarefaCategorias.Result;
 
                 //Atualiza os dados do card
                 //AtualizarNumeroCard(cardGames, games.Count.ToString());
                 //AtualizarNumeroCard(cardCategorias, categorias.Count.ToString());
 
-                cardGamesLblNumero.Text = games.Count.ToString();
+                cardGamesLblNumero.Text = pizzas.Count.ToString();
                 cardCategoriasLblNumero.Text = categorias.Count.ToString();
 
                 //Popula o DataGridView(tabela) com os últimos 10 games.
                 gridUltimasPizzas.Rows.Clear();
-                foreach (var game in games.OrderByDescending(x => x.CreatedAt).Take(10))
+                foreach (var game in pizzas.OrderByDescending(x => x.CreatedAt).Take(10))
                 {
                     gridUltimasPizzas.Rows.Add(
                         game.Id,
                         game.Name,
                         game.CategoriaName,
-                        game.Data,
                         game.IsFeatured,
                         game.CreatedAt.ToString("dd/MM/yyyy HH:mm")
-                        );
+                    );
                 }
 
             }

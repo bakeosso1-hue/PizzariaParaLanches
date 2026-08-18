@@ -51,11 +51,11 @@ namespace Pizzaria.Desktop.UserControls
 
             try
             {
-                var tarefaGames = _PizzaService.GetAllAsync();
+                var tarefaPizza = _PizzaService.GetAllAsync();
                 var tarefaCategorias = _categoriasService.GetAllAsync();
-                await Task.WhenAll(tarefaGames, tarefaCategorias);
+                await Task.WhenAll(tarefaPizza, tarefaCategorias);
 
-                _todasPizzas = tarefaGames.Result;
+                _todasPizzas = tarefaPizza.Result;
                 _categorias = tarefaCategorias.Result;
 
                 PopularGrid(_todasPizzas);
@@ -71,19 +71,16 @@ namespace Pizzaria.Desktop.UserControls
             }
         }
 
-        private void PopularGrid(List<PizzaResponseDto> games)
+        private void PopularGrid(List<PizzaResponseDto> Pizzas)
         {
             gridPizzas.Rows.Clear();
-            foreach (var g in games)
-            {
+            foreach (var p in Pizzas)
                 gridPizzas.Rows.Add(
-                    g.Id,
-                    g.Name,
-                    g.CategoriaName,
-                    g.Data,
-                    g.IsFeatured,
-                    g.CreatedAt.ToString("dd/MM/yyyy HH:mm"));
-            }
+                    p.Id,
+                    p.Name,
+                    p.CategoriaName,
+                    p.IsFeatured,
+                    p.CreatedAt.ToString("dd/MM/yyyy HH:mm"));
         }
 
 
@@ -121,28 +118,21 @@ namespace Pizzaria.Desktop.UserControls
 
         private async void btnNova_Click_1(object sender, EventArgs e)
         {
-            var form = new Form1();
-            form.ShowDialog();
-            //using var form = new PizzaFormDialog2(_categorias, null);
-            //if (form.ShowDialog() == DialogResult.OK && form.PizzaDto != null)
-            //{
-            //    var (success, _, error) = await _PizzaService.CreateAsync(form.PizzaDto);
-            //    if (success)
-            //    {
-            //        MessageBox.Show("Pizza criada com sucesso!",
-            //            "Sucesso",
-            //            MessageBoxButtons.OK,
-            //            MessageBoxIcon.Information);
-            //        await CarregarDadosAsync();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show($"❌ {error}",
-            //          "Erro",
-            //          MessageBoxButtons.OK,
-            //          MessageBoxIcon.Error);
-            //    }
-            //}
+            using var form = new Form1(_categorias, null);
+
+            if (form.ShowDialog() == DialogResult.OK && form.PizzaDto != null)
+            {
+                MessageBox.Show(
+                    $"Nome: {form.PizzaDto.Name}\n" +
+                    $"Descrição: {form.PizzaDto.Descrição}\n" +
+                    $"CategoriaId: {form.PizzaDto.CategoryId}\n" +
+                    $"Imagem: {form.PizzaDto.CoverImageUrl}\n" +
+                    $"Destaque: {form.PizzaDto.IsFeatured}");
+
+                var (success, _, error) = await _PizzaService.CreateAsync(form.PizzaDto);
+
+                MessageBox.Show($"Success: {success}\nErro: {error}");
+            }
         }
 
         private async void btnExcluir_Click(object sender, EventArgs e)
@@ -183,36 +173,29 @@ namespace Pizzaria.Desktop.UserControls
 
         private void txtPesquisa_KeyUp(object sender, KeyEventArgs e) => FiltrarPizzas();
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private async void btnEditar_Click(object sender, EventArgs e)
         {
-            var pizza = ObterPizzaSelecionado();
-            if (pizza != null)
+            var pizzas = ObterPizzaSelecionado();
+            if (pizzas == null)
             {
-                MessageBox.Show($"Selecione uma pizza para editar.", "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                    );
+                MessageBox.Show($"Selecione uma pizza para editar.",
+                     "Aviso",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Warning);
                 return;
-
             }
-            using var form = new PizzaFormDialog(_categorias, pizza);
-            if (form.ShowDialog() == DialogResult.OK && form.UpdateDto != null)
+
+            using var form = new Form1(_categorias, pizzas);
+            if (form.ShowDialog() == DialogResult.OK && form.Update != null)
             {
-                var (success, _, error) = _PizzaService.UpdateAsync(pizza.Id, form.UpdateDto).Result;
+                var (success, _, error) = await _PizzaService.UpdateAsync(pizzas.Id, form.UpdateDto);
                 if (success)
                 {
-                    MessageBox.Show("Pizza atualizada com sucesso!",
+                    MessageBox.Show("✅ Pizza Atualizada com sucesso!",
                         "Sucesso",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                    _ = CarregarDadosAsync();
-                }
-                else
-                {
-                    MessageBox.Show($"❌ {error}",
-                      "Erro",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
+                    await CarregarDadosAsync();
                 }
             }
         }

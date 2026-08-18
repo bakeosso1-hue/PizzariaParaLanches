@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pizzaria.Infrasctuture.Context;
 
@@ -11,9 +12,11 @@ using Pizzaria.Infrasctuture.Context;
 namespace Pizzaria.Infrasctuture.Migrations
 {
     [DbContext(typeof(PizzariaParaLanchesDbContext))]
-    partial class PizzariaParaLanchesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260818200323_AddPendingModelChanges")]
+    partial class AddPendingModelChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

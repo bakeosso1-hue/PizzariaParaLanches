@@ -1,5 +1,7 @@
-﻿using Pizzaria.Desktop.DTOs;
+﻿using System;
+using System.Linq;
 using Pizzaria.Desktop.DTOs;
+
 
 namespace Pizzaria.Desktop.Helpers
 {
@@ -16,8 +18,7 @@ namespace Pizzaria.Desktop.Helpers
 
         public bool IsAuthencticated => UsuarioAtual != null;
 
-        public bool IsAdmin => UsuarioAtual?.IsAdmin ?? false;
-
+        public bool IsAdmin => UsuarioAtual?.Roles?.Any(r => string.Equals(r, "Admin", StringComparison.OrdinalIgnoreCase)) ?? false;
         public void SetUser(UsuarioResponseDto user)
         {
             UsuarioAtual = user;

@@ -1,8 +1,10 @@
 ﻿using Pizzaria.Desktop.Helpers;
 using System.Net;
 using System.Net.Http.Json;
+using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace Pizzaria.Desktop.Helpers
 {
@@ -70,7 +72,7 @@ namespace Pizzaria.Desktop.Helpers
             {
 
                 using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-                var response = await _client.GetAsync("/api/games", cts.Token);
+                var response = await _client.GetAsync("/api/Pizza", cts.Token);
                 return (true, string.Empty);
             }
             catch (Exception ex)
@@ -107,8 +109,19 @@ namespace Pizzaria.Desktop.Helpers
                 var json = JsonSerializer.Serialize(body);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                MessageBox.Show(
+                 $"Base URL: {_client.BaseAddress}\n" +
+                $"Endpoint: {endpoint}\n" +
+                $"URL completa: {new Uri(_client.BaseAddress!, endpoint)}\n\n" +
+                $"JSON enviado:\n{json}",
+                "DEBUG - Requisição");
                 var response = await _client.PostAsync(endpoint, content);
                 var responseBody = await response.Content.ReadAsStringAsync();
+
+                MessageBox.Show(
+                    $"Status: {(int)response.StatusCode} - {response.StatusCode}\n\n" +
+                    $"Resposta da API:\n{responseBody}",
+                    "DEBUG - Resposta da API");
 
                 if (response.IsSuccessStatusCode)
                 {

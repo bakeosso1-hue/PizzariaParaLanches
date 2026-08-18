@@ -19,8 +19,8 @@ namespace Pizzaria.Desktop.Services
         {
             try
             {
-                var games = await _http.GetAsync<List<PizzaResponseDto>>("/api/games");
-                return games ?? new List<PizzaResponseDto>();
+                var pizzas = await _http.GetAsync<List<PizzaResponseDto>>("/api/Pizza");
+                return pizzas ?? new List<PizzaResponseDto>();
             }
             catch
             {
@@ -31,27 +31,27 @@ namespace Pizzaria.Desktop.Services
   
         public async Task<PizzaResponseDto> GetByIdAsync(int id)
         {
-            return await _http.GetAsync<PizzaResponseDto>($"/api/games/{id}");
+            return await _http.GetAsync<PizzaResponseDto>($"/api/Pizza/{id}");
         }
 
      
         public async Task<(bool Success, PizzaResponseDto? Game, string ErrorMessage)>
             CreateAsync(CreatePizzaDto dto)
         {
-            return await _http.PostAsync<PizzaResponseDto>("/api/games", dto);
+            return await _http.PostAsync<PizzaResponseDto>("/api/Pizza", dto);
         }
 
      
         public async Task<(bool Success, PizzaResponseDto? Game, string ErrorMessage)>
             UpdateAsync(int id, UpdatePizzaDto dto)
         {
-            return await _http.PutAsync<PizzaResponseDto>($"/api/games/{id}", dto);
+            return await _http.PutAsync<PizzaResponseDto>($"/api/Pizza/{id}", dto);
         }
 
        
         public async Task<(bool Success, string ErrorMessage)> DeleteAsync(int id)
         {
-            return await _http.DeleteAsync($"/api/games/{id}");
+            return await _http.DeleteAsync($"/api/Pizza/{id}");
         }
     }
 

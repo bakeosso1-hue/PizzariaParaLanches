@@ -7,7 +7,7 @@ using Pizzaria.Domain.Interfaces;
 using Pizzaria.Infrasctuture.Context;
 using Pizzaria.Infrasctuture.Identity;
 using Pizzaria.Infrasctuture.Repositories;
-using SenacGames.Infrastructure.Repositories;
+using Pizzaria.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

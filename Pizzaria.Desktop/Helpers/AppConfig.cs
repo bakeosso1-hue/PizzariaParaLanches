@@ -12,7 +12,7 @@ namespace Pizzaria.Desktop.Helpers
                  ApiEndpointResolver.Resolve() ?? string.Empty;
 
         public static string AppName =>
-              GetNestedValue("AppSettings", "AppName") ?? "SenacGames Desktop";
+              GetNestedValue("AppSettings", "AppName") ?? "Pizzaria Pará Desktop";
 
         public static string Version =>
              GetNestedValue("AppSettings", "Version") ?? "1.0.0";

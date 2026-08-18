@@ -1,9 +1,5 @@
-﻿
-
-using Pizzaria.Desktop.DTOs;
+﻿using Pizzaria.Desktop.DTOs;
 using Pizzaria.Desktop.Helpers;
-using SenacGames.Desktop.DTOs;
-using UsuarioResponseDto = Pizzaria.Desktop.DTOs.UsuarioResponseDto;
 
 
 namespace Pizzaria.Desktop.Services
