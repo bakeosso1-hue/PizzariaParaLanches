@@ -35,7 +35,9 @@ namespace Pizzaria.Desktop.Forms
                 cmbCategoria.Items.Add(categoria.Name);
 
             cmbCategoria.SelectedIndex = 0;
-            //PreencherCampos();
+
+            // Preenche os campos quando estivermos editando
+            PreencherCampos();
         }
         private void PreencherCampos()
         {
@@ -69,6 +71,19 @@ namespace Pizzaria.Desktop.Forms
                 {
                     Name = txtTítulo.Text,
                     Descrição = txtDescricao.Text,
+                    CoverImageUrl = txtCoverUrl.Text,
+                    IsFeatured = chkDestaque.Checked,
+                    CategoryId = categoriaId
+                };
+            }
+            else
+            {
+                // Cria o DTO de atualização quando estivermos editando
+                UpdateDto = new UpdatePizzaDto
+                {
+                    Name = txtTítulo.Text,
+                    Descrição = txtDescricao.Text,
+                    Data = pizzaexistente.Data,
                     CoverImageUrl = txtCoverUrl.Text,
                     IsFeatured = chkDestaque.Checked,
                     CategoryId = categoriaId

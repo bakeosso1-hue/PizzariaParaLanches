@@ -109,19 +109,9 @@ namespace Pizzaria.Desktop.Helpers
                 var json = JsonSerializer.Serialize(body);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                MessageBox.Show(
-                 $"Base URL: {_client.BaseAddress}\n" +
-                $"Endpoint: {endpoint}\n" +
-                $"URL completa: {new Uri(_client.BaseAddress!, endpoint)}\n\n" +
-                $"JSON enviado:\n{json}",
-                "DEBUG - Requisição");
                 var response = await _client.PostAsync(endpoint, content);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
-                MessageBox.Show(
-                    $"Status: {(int)response.StatusCode} - {response.StatusCode}\n\n" +
-                    $"Resposta da API:\n{responseBody}",
-                    "DEBUG - Resposta da API");
 
                 if (response.IsSuccessStatusCode)
                 {

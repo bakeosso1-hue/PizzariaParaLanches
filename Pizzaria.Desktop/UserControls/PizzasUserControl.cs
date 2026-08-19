@@ -58,6 +58,13 @@ namespace Pizzaria.Desktop.UserControls
                 _todasPizzas = tarefaPizza.Result;
                 _categorias = tarefaCategorias.Result;
 
+                // Preencher o nome da categoria em cada pizza usando o CategoryId
+                var categoriasPorId = _categorias.ToDictionary(c => c.Id, c => c.Name);
+                foreach (var p in _todasPizzas)
+                {
+                    p.CategoriaName = categoriasPorId.TryGetValue(p.CategoryId, out var nome) ? nome : string.Empty;
+                }
+
                 PopularGrid(_todasPizzas);
 
             }
@@ -83,8 +90,6 @@ namespace Pizzaria.Desktop.UserControls
                     p.CreatedAt.ToString("dd/MM/yyyy HH:mm"));
         }
 
-
-
         private void FiltrarPizzas()
         {
             var termo = txtPesquisa.Text.Trim().ToLower();
@@ -102,19 +107,13 @@ namespace Pizzaria.Desktop.UserControls
             PopularGrid(filtrados);
         }
 
-
-
-
         private PizzaResponseDto? ObterPizzaSelecionado()
         {
-
             if (gridPizzas.SelectedRows.Count == 0) return null;
             var row = gridPizzas.SelectedRows[0];
             var id = Convert.ToInt32(row.Cells["colid"].Value);
             return _todasPizzas.FirstOrDefault(g => g.Id == id);
         }
-
-
 
         private async void btnNova_Click_1(object sender, EventArgs e)
         {
@@ -175,8 +174,8 @@ namespace Pizzaria.Desktop.UserControls
 
         private async void btnEditar_Click(object sender, EventArgs e)
         {
-            var pizzas = ObterPizzaSelecionado();
-            if (pizzas == null)
+            var pizza = ObterPizzaSelecionado();
+            if (pizza == null)
             {
                 MessageBox.Show($"Selecione uma pizza para editar.",
                      "Aviso",
@@ -185,10 +184,11 @@ namespace Pizzaria.Desktop.UserControls
                 return;
             }
 
-            using var form = new Form1(_categorias, pizzas);
-            if (form.ShowDialog() == DialogResult.OK && form.Update != null)
+            using var form = new Form1(_categorias, pizza);
+            if (form.ShowDialog() == DialogResult.OK && form.UpdateDto != null)
             {
-                var (success, _, error) = await _PizzaService.UpdateAsync(pizzas.Id, form.UpdateDto);
+                var updateDto = form.UpdateDto; // garantia de não-nulo local
+                var (success, _, error) = await _PizzaService.UpdateAsync(pizza.Id, updateDto);
                 if (success)
                 {
                     MessageBox.Show("✅ Pizza Atualizada com sucesso!",
@@ -196,6 +196,13 @@ namespace Pizzaria.Desktop.UserControls
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     await CarregarDadosAsync();
+                }
+                else
+                {
+                    MessageBox.Show($"❌ {error}",
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
